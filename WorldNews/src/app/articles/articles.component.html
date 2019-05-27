@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <form #searchArticleForm="ngForm" (ngSubmit)="searchArticle(searchArticleForm)">
+    <div class="float-left">
+      <button class="btn btn-primary mt-2 mb-2 custom" routerLink="addArticle">New</button>
+    </div>
+    <div class="float-right" id="articleSearchContainer">
+      <input
+              type="text"
+              class="form-control mt-2 mb-2"
+              id="articleSearch"
+              name="name"
+              placeholder="Search"
+              ngModel
+              #nameField="ngModel"
+              required
+              (keyup)="onKeyUpEvent()">
+        <button type="submit" class="btn" [hidden]="true"></button>
+    </div>
+  </form>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Author</th>
+        <th>Section</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Title</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let article of articles">
+        <td>{{article.author}}</td>
+        <td>{{article.section}}</td>
+        <td>{{article.status}}</td>
+        <td>{{article.date}}</td>
+        <td>{{article.title}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
